@@ -21,3 +21,16 @@ resource "aws_iam_policy" "default" {
   policy = var.policy
   name = var.name
 }
+
+resource "aws_iam_role_policy_attachment" "default" {
+  policy_arn = aws_iam_policy.default.arn
+  role = aws_iam_role.default.name
+}
+
+output "iam_role_arn" {
+  value = aws_iam_role.default.arn
+}
+
+output "iam_role_name" {
+  value = aws_iam_policy.default.name
+}
